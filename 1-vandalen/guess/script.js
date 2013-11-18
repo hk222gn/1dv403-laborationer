@@ -21,6 +21,7 @@ window.onload = function(){
 		    return [false, "Det hemliga talet är lägre!"]
 		}
 		else {
+		    guesses -= 1;
 		    return [false, "Talet är utanför intervallet 1 - 100"]
 		}
 	};
