@@ -2,21 +2,30 @@
 
 window.onload = function(){
 
-	// I denna funktion ska du skriva koden för att hantera "spelet"
+    // I denna funktion ska du skriva koden för att hantera "spelet"
+    var t = '';
+    var i;
 	var convertString = function(str){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+	    if (str.length === 0) {
+	        throw "strängen är ju tom!";
+	    }
 
-
-
-
-
-
+	    for (i = 0; i < str.length; i++) {
+	        if (str.charAt(i) == str.charAt(i).toLowerCase()) {
+	            t += str.charAt(i).toUpperCase().replace("A", "#");
+	        }
+	        else
+	            t += str.charAt(i).toLowerCase().replace("a", "#");
+	    }
+	    
+	    return t;
+	    
 	};
-	// ------------------------------------------------------------------------------
 
+	// ------------------------------------------------------------------------------
 
 	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
 	var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
