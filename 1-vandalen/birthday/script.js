@@ -2,19 +2,37 @@
 
 window.onload = function(){
 
-	
-	var birthday = function(date){
-		
+    
 
 
-			// Din kod här.
+    var birthday = function (date) {
+        if (!/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(date))
+            throw new Error("Du har inte angivigt datumet enligt: YYYY-MM-DD");
 
 
+        var d = new Date();
+        var db = new Date(date);;
+        var dagar; 
+
+
+		// Din kod här.
+	    if (d > db) {
+	        d.setYear += 1;
+	        console.log(d);
+	    }
+	    if (d === db) {
+	        return 0;
+	    }
+	    //else if (d.set) {// + en dag date.getTime() < d.getTime() + (864*100000) && date.getTime()
+	    //    return 1;
+	    //}
+	    //else {
+	    //    return dagar;
+	    //}
 
 
 	};
 	// ------------------------------------------------------------------------------
-
 
 	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
 	var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
