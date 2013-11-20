@@ -1,7 +1,7 @@
 "use strict";
 
 var makePerson = function(persArr){
-    var i, averageAge = 0, names = "", maxAge, minAge, result, temp1, temp2, temp3;
+    var i, averageAge = 0, names = "", maxAge, minAge, result;
 
     //Kollar max och min värde
     maxAge = Math.max.apply(Math, persArr.map(function (o) { return o.age; }));
@@ -9,8 +9,7 @@ var makePerson = function(persArr){
 
     //Sorterar namnen
     persArr.sort(function (a, b) {
-        var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
-        return nameA.localeCompare(nameB);
+        return a.name.localeCompare(b.name);
     });
 
     //Lägger namnen i names med rätt struktur och räknar ut medelåldern
