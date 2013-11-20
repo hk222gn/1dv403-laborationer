@@ -1,24 +1,34 @@
 "use strict";
 
 var makePerson = function(persArr){
-    var i, averageAge, names = "", maxAge, minAge, result;
+    var i, averageAge = 0, names = "", maxAge, minAge, result, temp1, temp2, temp3;
+
+    //Kollar max och min värde
     maxAge = Math.max.apply(Math, persArr.map(function (o) { return o.age; }));
     minAge = Math.min.apply(Math, persArr.map(function (o) { return o.age; }));
 
+    //Sorterar namnen
+    persArr.sort(function (a, b) {
+        var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+        return nameA.localeCompare(nameB);
+    });
+
+    //Lägger namnen i names med rätt struktur och räknar ut medelåldern
     for (i = 0; i < persArr.length; i += 1) {
         
+        //namnen
         if (i < persArr.length - 1) {
             names += persArr[i].name + ", ";
         }
         else
             names += persArr[i].name;
+        //Medelåldern
+        averageAge += persArr[i].age;
     }
-    for (i = 0; i < persArr.length; i += 1) {
-        averageAge += persArr[i].age; // lägg till korrekt uträkning
-        console.log(persArr[i].age);
-    }
-    averageAge = averageAge / persArr.length;
-    result = { maxAge: maxAge, minAge: minAge, averageAge: averageAge, names: names };
+
+    averageAge = Math.round(averageAge / persArr.length);
+
+    result = { averageAge: averageAge, maxAge: maxAge, minAge: minAge, names: names };
 
     return result;
 }
