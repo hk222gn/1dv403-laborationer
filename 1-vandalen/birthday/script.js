@@ -13,22 +13,20 @@ window.onload = function(){
         var d = new Date();
         var db = new Date(date);;
         var dagar; 
-
-
+        console.log(d);
+        console.log(db);
 		// Din kod här.
-	    if (d > db) {
-	        d.setYear += 1;
+	    if (d.getTime() > db.getTime()) { // ???
+	        d.setYear += 1;// ??? byt plats?
 	        console.log(d);
-	    }
-	    if (d === db) {
-	        return 0;
 	    }
 	    //else if (d.set) {// + en dag date.getTime() < d.getTime() + (864*100000) && date.getTime()
 	    //    return 1;
 	    //}
 	    //else {
 	    //    return dagar;
-	    //}
+        //}
+	    return Math.floor(((db.getTime() + (864 * 100000)) - d.getTime()) / 1000 / 60 / 60 / 24);
 
 
 	};
