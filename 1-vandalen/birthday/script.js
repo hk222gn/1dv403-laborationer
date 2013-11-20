@@ -12,6 +12,8 @@ window.onload = function(){
         var dag = 864 * 100000;
         var year;
 
+        db.setFullYear(2013);
+
         if (Math.floor(((db.getTime() + dag) - d.getTime()) / 1000 / 60 / 60 / 24) < 0) {
             year = db.getFullYear();
             db.setFullYear(year += 1);
