@@ -9,25 +9,16 @@ window.onload = function(){
         if (!/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(date))
             throw new Error("Du har inte angivigt datumet enligt: YYYY-MM-DD");
 
-
         var d = new Date();
-        var db = new Date(date);;
-        var dagar; 
-        console.log(d);
-        console.log(db);
-		// Din kod här.
-	    if (d.getTime() > db.getTime()) { // ???
-	        d.setYear += 1;// ??? byt plats?
-	        console.log(d);
-	    }
-	    //else if (d.set) {// + en dag date.getTime() < d.getTime() + (864*100000) && date.getTime()
-	    //    return 1;
-	    //}
-	    //else {
-	    //    return dagar;
-        //}
-	    return Math.floor(((db.getTime() + (864 * 100000)) - d.getTime()) / 1000 / 60 / 60 / 24);
+        var db = new Date(date);
+        var dag = 864 * 100000;
+        var year;
 
+        if (Math.floor(((db.getTime() + dag) - d.getTime()) / 1000 / 60 / 60 / 24) < 0) {
+            year = db.getFullYear();
+            db.setFullYear(year += 1);
+        }
+        return Math.floor(((db.getTime() + dag) - d.getTime()) / 1000 / 60 / 60 / 24);
 
 	};
 	// ------------------------------------------------------------------------------
