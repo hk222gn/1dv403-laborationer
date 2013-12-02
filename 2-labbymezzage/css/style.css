@@ -1,0 +1,30 @@
+body {
+    background-color:#00FFFF;
+}
+h1 {
+    text-align:center;
+    font-size:50px;
+    color:#0000FF;
+}
+#box {
+    background-color:white;
+    width:600px;
+    border:solid #AFAFAF 1px;
+    height:250px;
+    margin:auto;
+}
+#counter {
+}
+textarea {
+    height:150px;
+    border-top:solid #AFAFAF 1px;
+    border-bottom:solid #AFAFAF 1px;
+    border-left:none;
+    border-right:none;  
+    width:596px;
+    margin-top:50px;
+
+}
+button {
+    float:right;
+}

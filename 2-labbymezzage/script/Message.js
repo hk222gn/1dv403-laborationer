@@ -1,3 +1,5 @@
+"use strict";
+
 function Message(message, date) {
 
 	this.getText = function() {
@@ -9,11 +11,11 @@ function Message(message, date) {
 	}
 	
 	this.getDate = function() {
-		
+	    return date;
 	}
 	
 	this.setDate = function(_date) {
-	
+	    date = _date;
 	}
 	
 	Message.prototype.toString = function() {
