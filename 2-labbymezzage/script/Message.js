@@ -22,11 +22,11 @@ function Message(message, date) {
 		return this.getText()+" ("+this.getDate()+")";
 	}
 	
-	Message.prototype.getHTMLText = function() {
-	
+	Message.prototype.getHTMLText = function () {
+	    return message + "<br />";
 	}
 	
 	Message.prototype.getDateText = function() {
-	
+	    return date.Hour();
 	}
 }

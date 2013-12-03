@@ -10,21 +10,31 @@ h1 {
     background-color:white;
     width:600px;
     border:solid #AFAFAF 1px;
-    height:250px;
     margin:auto;
 }
 #counter {
 }
 textarea {
-    height:150px;
-    border-top:solid #AFAFAF 1px;
-    border-bottom:solid #AFAFAF 1px;
+    border-top:solid #7A7A7A 1px;
+    border-bottom:solid #7A7A7A 1px;
     border-left:none;
     border-right:none;  
     width:596px;
     margin-top:50px;
-
 }
-button {
+#messagearea {
+    margin-top:-17px;
+}
+p {
+    border-top:solid #AFAFAF 1px;
+    padding:2px;
+    background: url("../bilder/NO.png");
+    background-repeat:no-repeat;
+    background-position:right;
+}
+#delete img {
+    background-position:right;
+}
+#button {
     float:right;
 }

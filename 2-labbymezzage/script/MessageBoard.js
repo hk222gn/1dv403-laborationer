@@ -1,43 +1,69 @@
 "use strict";
 
 var MessageBoard = {
-
+    
     messages: [],
 
     init: function (e) {
-        //var mess = new Message("Tester", new Date());
-        //alert(mess);
-        //alert(mess.getText());
-        //mess.setText("Rrrtser");
-        //alert(mess);
-        MessageBoard.messages[0] = new Message("Tast", new Date());
-
         var button = document.getElementById("button");
-        button.onclick = function (e) {
-            GetMessageFromTextfield()
+        button.addEventListener("click", MessageBoard.getMessage, false);
+        var dbutton = document.getElementsByName("a");
+    },
+
+    getMessage: function () {
+
+        var mess = new Message(document.getElementById("textarea").value, new Date());
+        MessageBoard.messages.push(mess);
+        MessageBoard.renderMessage(0);//MessageBoard.messages.length -1
+
+        
+    },
+
+    renderMessages: function () {
+
+        var div = document.getElementById("messagearea").innerHTML = "";
+
+        for (var i = 0; i < MessageBoard.messages.length; i += 1) {
+            MessageBoard.renderMessages(i);
         }
-        var GetMessageFromTextfield = function () {
-            MessageBoard.messages[0] = new Message(document.getElementById("textarea").value, new Date());
-            console.log(MessageBoard.messages[0].getText());
-            console.log(MessageBoard.messages[0].getDate());
-            alert(MessageBoard.messages[0]);
+    },
+    
+    
+    renderMessage: function (messageID) {
+
+        var div = document.getElementById("messagearea");
+        var text = document.createElement("p");
+        text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
+        div.appendChild(text);
+        var a = document.createElement("a");
+        a.setAttribute('src', '#');
+        a.setAttribute("class", "delete");
+        a.alt = "Close";
+        text.appendChild(a);//skit med A taggen, ska den wrappa allt?
+        //var img = document.createElement("img");
+        //img.setAttribute("src", "bilder/NO.png");
+        //a.appendChild(img);
+        a.onclick = function () {
+            MessageBoard.deleteMessage(messageID);
         }
+    },
 
-        var renderMessages = function () {// varfor funkar inte renderMessage: function()
-
-            document.getElementById("messagearea").innerHTML = "";
-
-            for (var i = 0; i < MessageBoard.messages.length; i+=1) {
-                MessageBoard.renderMessages(i);
-            }
-        }
-
-        var renderMessage = function(messageID) {
-            //dona
-
-        }
+    deleteMessage: function (messageID) {
+        MessageBoard.message.splice(index, messageID);
     }
+    
 }
+
+window.onload = function () {
+    MessageBoard.init();
+}
+
+//submitButton: function () {
+    //    getMessageFromTextfield()
+    //    renderMessage(0);
+    //    logger(MessageBoard.messages[0].getText());
+    //    logger(MessageBoard.messages[0].getDate());
+    //},
 
     
 
