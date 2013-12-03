@@ -8,14 +8,14 @@ var MessageBoard = {
         var button = document.getElementById("button");
         button.addEventListener("click", MessageBoard.getMessage, false);
         var dbutton = document.getElementsByName("a");
+        
     },
 
     getMessage: function () {
 
         var mess = new Message(document.getElementById("textarea").value, new Date());
         MessageBoard.messages.push(mess);
-        MessageBoard.renderMessage(0);//MessageBoard.messages.length -1
-
+        MessageBoard.renderMessage(MessageBoard.messages.length - 1);
         
     },
 
@@ -31,21 +31,35 @@ var MessageBoard = {
     
     renderMessage: function (messageID) {
 
+        //Skriver ut anvandarens text
         var div = document.getElementById("messagearea");
         var text = document.createElement("p");
-        text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
+        text.innerHTML = MessageBoard.messages[messageID].getHTMLText();//Gron text ska fixas
         div.appendChild(text);
-        var a = document.createElement("a");
-        a.setAttribute('src', '#');
-        a.setAttribute("class", "delete");
-        a.alt = "Close";
+
+        //Skapar A taggen, klickbar
+        var a = document.createElement("a");//
+        a.setAttribute('src', '#');//
+        a.setAttribute("class", "delete");//
+        a.alt = "Close";//
         text.appendChild(a);//skit med A taggen, ska den wrappa allt?
+
         //var img = document.createElement("img");
         //img.setAttribute("src", "bilder/NO.png");
         //a.appendChild(img);
+        
+        //Skriver ut countern
+        var counter = document.getElementById("counter");
+        counter.innerHTML = "Antal Meddelanden: " + MessageBoard.messages.length;
+
         a.onclick = function () {
             MessageBoard.deleteMessage(messageID);
         }
+
+        //Skriver ut footer dar tiden da meddelandet las till visas.
+        var footer = document.createElement("footer");
+        footer.innerHTML = "Skrivet: " + MessageBoard.messages[messageID].getDateText().toLocaleTimeString();
+        div.appendChild(footer);
     },
 
     deleteMessage: function (messageID) {

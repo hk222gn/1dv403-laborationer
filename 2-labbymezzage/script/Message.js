@@ -23,10 +23,10 @@ function Message(message, date) {
 	}
 	
 	Message.prototype.getHTMLText = function () {
-	    return message + "<br />";
+	    return this.getText().replace(/[\n\r]/g, "<br />");
 	}
 	
 	Message.prototype.getDateText = function() {
-	    return date.Hour();
+	    return this.getDate();
 	}
 }

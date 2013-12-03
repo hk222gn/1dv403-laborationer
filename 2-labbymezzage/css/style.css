@@ -11,8 +11,10 @@ h1 {
     width:600px;
     border:solid #AFAFAF 1px;
     margin:auto;
+    min-height:200px;
 }
 #counter {
+    text-align:right;
 }
 textarea {
     border-top:solid #7A7A7A 1px;
@@ -32,8 +34,8 @@ p {
     background-repeat:no-repeat;
     background-position:right;
 }
-#delete img {
-    background-position:right;
+footer {
+    text-align:left;
 }
 #button {
     float:right;
