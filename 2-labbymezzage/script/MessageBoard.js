@@ -6,14 +6,31 @@ var MessageBoard = {
 
     init: function (e) {
         var button = document.getElementById("button");
+        var textarea = document.getElementById("textarea");
+
+        textarea.onkeypress = function (e) {
+            if (!e) var e = window.event;
+
+            if (e.shiftKey) {
+                
+            }
+            else if (e.keyCode == 13) {
+                MessageBoard.getMessage();
+                e.preventDefault();
+            }
+        }
+
+        
         button.addEventListener("click", MessageBoard.getMessage, false);
-        var dbutton = document.getElementsByName("a");
+        
         
     },
 
     getMessage: function () {
 
         var mess = new Message(document.getElementById("textarea").value, new Date());
+        var area = document.getElementById("textarea");
+        area.value = "";
         MessageBoard.messages.push(mess);
         MessageBoard.renderMessage(MessageBoard.messages.length - 1);
         
@@ -23,9 +40,11 @@ var MessageBoard = {
 
         var div = document.getElementById("messagearea").innerHTML = "";
 
-        for (var i = 0; i < MessageBoard.messages.length; i += 1) {
-            MessageBoard.renderMessages(i);
+        for (var i = 0; i < MessageBoard.messages.length;i++) {
+            MessageBoard.renderMessage(i);
         }
+        MessageBoard.counterRender();
+        
     },
     
     
@@ -35,36 +54,57 @@ var MessageBoard = {
         var div = document.getElementById("messagearea");
         var text = document.createElement("p");
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();//Gron text ska fixas
-        div.appendChild(text);
+        
 
         //Skapar A taggen, klickbar
-        var a = document.createElement("a");//
-        a.setAttribute('src', '#');//
-        a.setAttribute("class", "delete");//
-        a.alt = "Close";//
-        text.appendChild(a);//skit med A taggen, ska den wrappa allt?
-
-        //var img = document.createElement("img");
-        //img.setAttribute("src", "bilder/NO.png");
-        //a.appendChild(img);
+        var a = document.createElement("a");
+        a.setAttribute("href", "#");
+        a.setAttribute("class", "delete");
+        a.alt = "Close";
         
-        //Skriver ut countern
-        var counter = document.getElementById("counter");
-        counter.innerHTML = "Antal Meddelanden: " + MessageBoard.messages.length;
+        
+        MessageBoard.counterRender();
 
         a.onclick = function () {
+            if (!(confirm("Ar du saker pa att du vill radera meddelandet?"))) {
+                return;
+            }
             MessageBoard.deleteMessage(messageID);
+        }
+        var aa = document.createElement("a");
+        aa.setAttribute("href", "#");
+        aa.setAttribute("class", "time");
+        aa.alt = "Time";
+        
+
+        aa.onclick = function () {
+            
+            alert(MessageBoard.messages[messageID].getDateText());
         }
 
         //Skriver ut footer dar tiden da meddelandet las till visas.
         var footer = document.createElement("footer");
-        footer.innerHTML = "Skrivet: " + MessageBoard.messages[messageID].getDateText().toLocaleTimeString();
+        footer.innerHTML = "Skrivet: " + MessageBoard.messages[messageID].getDate().toLocaleTimeString();
+
+        div.appendChild(a);
+        div.appendChild(aa);
         div.appendChild(footer);
+        div.appendChild(text);
+        
     },
 
     deleteMessage: function (messageID) {
-        MessageBoard.message.splice(index, messageID);
+        MessageBoard.messages.splice(messageID, 1);
+        MessageBoard.renderMessages();
+    },
+
+    counterRender: function () {
+        //Skriver ut countern
+        var counter = document.getElementById("counter");
+        counter.innerHTML = "";
+        counter.innerHTML = "Antal Meddelanden: " + MessageBoard.messages.length;
     }
+
     
 }
 
@@ -79,14 +119,3 @@ window.onload = function () {
     //    logger(MessageBoard.messages[0].getDate());
     //},
 
-    
-
-
-
-//if (button.AddEventListener) {
-//    button.click("onclick", function () { //nytt objekt med texten. 
-//        // Anvand value pa textarea objektet for att fa ut vad anvandaren skrev in.
-//        console.log("RUMPE");
-//        button.click(function () {console.log("RUMPE");});
-//    });
-//}

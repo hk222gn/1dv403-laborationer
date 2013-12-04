@@ -27,6 +27,9 @@ function Message(message, date) {
 	}
 	
 	Message.prototype.getDateText = function() {
-	    return this.getDate();
+	    //return this.getDate();
+	    var months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+	    return "Inglagget skapades den " + this.getDate().getDay() + " " + months[this.getDate().getMonth()] + " " + this.getDate().getFullYear() + " klockan " + this.getDate().toLocaleTimeString();
 	}
 }

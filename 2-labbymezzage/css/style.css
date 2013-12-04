@@ -11,7 +11,7 @@ h1 {
     width:600px;
     border:solid #AFAFAF 1px;
     margin:auto;
-    min-height:200px;
+    min-height:110px;
 }
 #counter {
     text-align:right;
@@ -22,21 +22,36 @@ textarea {
     border-left:none;
     border-right:none;  
     width:596px;
-    margin-top:50px;
+    min-height:100px;
+    clear:both;
 }
 #messagearea {
     margin-top:-17px;
+    background-color:#33CCFF;
+    clear:both;
 }
 p {
     border-top:solid #AFAFAF 1px;
     padding:2px;
-    background: url("../bilder/NO.png");
-    background-repeat:no-repeat;
-    background-position:right;
+    min-height:50px;
 }
 footer {
-    text-align:left;
-}
-#button {
+    font-size:12px;
+    display:block;
+    clear:both;
     float:right;
+}
+.delete {
+    background: url("../bilder/NO.png");
+	width:35px;
+	height:31px;
+	display:block;
+	float:right;
+}
+.time {
+    background: url("../bilder/time.png");
+	width:35px;
+	height:31px;
+	display:block;
+	float:right;
 }
