@@ -1,28 +1,21 @@
 "use strict";
 
-var rows = 4;
-var cells = 4;
+
 var counter = 0;
 
 var Memory = {
 
     randArr: [],
 
-    picArr: ["pics/0.png",
-                        "pics/1.png",
-                        "pics/2.png",
-                        "pics/3.png",
-                        "pics/4.png",
-                        "pics/5.png",
-                        "pics/6.png",
-                        "pics/7.png",
-                        "pics/8.png"],
     init: function () {
+        var rows = 4,
+            cells = 4;
+
         Memory.randArr = RandomGenerator.getPictureArray(rows, cells);//Ska ? bilden vara pa alla forst, sen bytas? med hjalp av ett ID?
-        Memory.renderTable();
+        Memory.renderTable(rows, cells);
     },
 
-    renderTable: function () {
+    renderTable: function (rows, cells) {
         //array with all pictures
         
 
@@ -30,39 +23,58 @@ var Memory = {
 
         var div = document.getElementById("table");
         var thead = document.createElement("table");
-        var tbody = document.createElement("tbody");
         
         thead.setAttribute("border", 1);
         div.appendChild(thead);
         
         //Creates the table and adds the images( + links)
         for (var i = 0; i < rows; i++) {
+
             var tr = document.createElement("tr");
             thead.appendChild(tr);
 
             for (var j = 0; j < cells; j++) {
 
-                picID += 1;
+                
 
                 var td = document.createElement("td");
                 var img = document.createElement("img");
                 var a = document.createElement("a");
+
                 a.href = "#";
-                img.src = Memory.picArr[0];//make dynamic
-                img.id = picID;//unsure
-                //img.src = picArr[Memory.randArr[picID]];
+                img.src = "pics/0.png";
+
                 tr.appendChild(td);
                 td.appendChild(a);
                 a.appendChild(img);
+                //a.onclick = function (e) {
+                //    e.preventDefault();
+                //    Memory.flipPicture();
+                    
+                //}
+                Memory.flipPicture(picID, a);
 
+                picID += 1;
             }
         }
-        a.onclick = Memory.flipPicture;
     },
-    flipPicture: function () {
+    flipPicture: function (picID, id) {
         counter += 1;
-        document.getElementById("1").src = Memory.picArr[Memory.randArr[1]];//unsure
-        console.log("as");
+
+        id.onclick = function () {
+            var img = id.getElementsByTagName("img")[0];
+            if (img.getAttribute("src") == "pics/0.png") {
+
+                img.src = "pics/" + Memory.randArr[picID] + ".png";
+                if (counter % 2 == 0) {
+                    //timer TROR JAG HAHHAHAHA SA KUL :)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+                }
+            }
+        }
+        //var img = document.getElementsByTagName();
+        //img.src = Memory.picArr[Memory.randArr[1]];
+        //a.src = Memory.picArr[Memory.randArr[img.id]]
+        //document.getElementById("2").src = Memory.picArr[Memory.randArr[1]];//unsure
         //Document?
         //gor sa bilden byts
         //on click, find out about the image number? in randArr?
