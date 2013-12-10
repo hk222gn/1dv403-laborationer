@@ -1,18 +1,20 @@
 "use strict";
 
 
-var counter = 0;
-
 var Memory = {
-
+    counter: 0,
+    rows: 2,
+    cells: 4,
     randArr: [],
+    compArr: [],
+    clickable: 0,
+    win: 0,
+    
 
     init: function () {
-        var rows = 4,
-            cells = 4;
-
-        Memory.randArr = RandomGenerator.getPictureArray(rows, cells);//Ska ? bilden vara pa alla forst, sen bytas? med hjalp av ett ID?
-        Memory.renderTable(rows, cells);
+        
+        Memory.randArr = RandomGenerator.getPictureArray(Memory.rows, Memory.cells);//Ska ? bilden vara pa alla forst, sen bytas? med hjalp av ett ID?
+        Memory.renderTable(Memory.rows, Memory.cells);
     },
 
     renderTable: function (rows, cells) {
@@ -35,8 +37,6 @@ var Memory = {
 
             for (var j = 0; j < cells; j++) {
 
-                
-
                 var td = document.createElement("td");
                 var img = document.createElement("img");
                 var a = document.createElement("a");
@@ -47,11 +47,7 @@ var Memory = {
                 tr.appendChild(td);
                 td.appendChild(a);
                 a.appendChild(img);
-                //a.onclick = function (e) {
-                //    e.preventDefault();
-                //    Memory.flipPicture();
-                    
-                //}
+
                 Memory.flipPicture(picID, a);
 
                 picID += 1;
@@ -59,26 +55,42 @@ var Memory = {
         }
     },
     flipPicture: function (picID, id) {
-        counter += 1;
 
         id.onclick = function () {
+            Memory.clickable += 1;
+
             var img = id.getElementsByTagName("img")[0];
-            if (img.getAttribute("src") == "pics/0.png") {
+            if (img.getAttribute("src") == "pics/0.png" && Memory.clickable === 1 || Memory.clickable === 2) {
 
                 img.src = "pics/" + Memory.randArr[picID] + ".png";
-                if (counter % 2 == 0) {
-                    //timer TROR JAG HAHHAHAHA SA KUL :)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+                
+                Memory.compArr[(Memory.clickable - 1)] = img;
+
+                if (Memory.clickable === 2 && Memory.compArr[0].getAttribute("src") === Memory.compArr[1].getAttribute("src")) {
+
+                    Memory.win += 1;
+                    Memory.clickable = 0;
+                    console.log(Memory.win);
+
+                    if (Memory.win === (Memory.rows * Memory.cells) / 2) {
+                        alert("Congratulations! you won! " + Math.floor(Memory.counter / 2) + " attempts was made before you won.");
+                    }
+                }
+                else if (Memory.clickable === 2){
+
+                    setTimeout(function () {
+                        Memory.compArr[0].setAttribute("src", "pics/0.png");
+                        Memory.compArr[1].setAttribute("src", "pics/0.png");
+                        Memory.clickable = 0;
+                    }, 500);
                 }
             }
+            Memory.counter += 1;
         }
-        //var img = document.getElementsByTagName();
-        //img.src = Memory.picArr[Memory.randArr[1]];
-        //a.src = Memory.picArr[Memory.randArr[img.id]]
-        //document.getElementById("2").src = Memory.picArr[Memory.randArr[1]];//unsure
-        //Document?
-        //gor sa bilden byts
-        //on click, find out about the image number? in randArr?
     }
 }
 
 window.onload = Memory.init;
+
+//Memory.compArr.push(img);
+//Memory.compArr[Memory.counter % 2] = Memory.randArr[picID]
