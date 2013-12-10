@@ -3,7 +3,7 @@
 
 var Memory = {
     counter: 0,
-    rows: 2,
+    rows: 4,
     cells: 4,
     randArr: [],
     compArr: [],
@@ -57,23 +57,26 @@ var Memory = {
     flipPicture: function (picID, id) {
 
         id.onclick = function () {
-            Memory.clickable += 1;
 
             var img = id.getElementsByTagName("img")[0];
-            if (img.getAttribute("src") == "pics/0.png" && Memory.clickable === 1 || Memory.clickable === 2) {
 
+            if (img.getAttribute("src") != "pics/0.png")
+                return;
+
+            if (img.getAttribute("src") === "pics/0.png" && Memory.clickable === 0 || Memory.clickable === 1) {
+
+				Memory.clickable += 1;
                 img.src = "pics/" + Memory.randArr[picID] + ".png";
                 
-                Memory.compArr[(Memory.clickable - 1)] = img;
+                Memory.compArr[Memory.counter % 2] = img;
 
                 if (Memory.clickable === 2 && Memory.compArr[0].getAttribute("src") === Memory.compArr[1].getAttribute("src")) {
 
                     Memory.win += 1;
                     Memory.clickable = 0;
-                    console.log(Memory.win);
 
                     if (Memory.win === (Memory.rows * Memory.cells) / 2) {
-                        alert("Congratulations! you won! " + Math.floor(Memory.counter / 2) + " attempts was made before you won.");
+                        alert("Congratulations! You won! " + Math.floor(Memory.counter / 2) + " attempts were made before you won.");
                     }
                 }
                 else if (Memory.clickable === 2){
@@ -84,8 +87,8 @@ var Memory = {
                         Memory.clickable = 0;
                     }, 500);
                 }
+                Memory.counter += 1;
             }
-            Memory.counter += 1;
         }
     }
 }
