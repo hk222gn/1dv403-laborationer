@@ -7,7 +7,7 @@ var Validate = {
 
         var form = document.querySelector("#form");
 
-        Validate.validation(form);
+        Validate.getElements(form);
             
         Validate.isEmpty(Validate.arr[0]);
         Validate.isEmpty(Validate.arr[1]);
@@ -16,15 +16,20 @@ var Validate = {
 
         Validate.checkMail(Validate.arr[3]);
 
+        form.onsubmit = function () {
+
+            //If there are a ton of these, use a for loop to get the amount of "valid" classes, then compare to the amount there should be.
+            if (Validate.arr[0].className && Validate.arr[1].className && Validate.arr[2].className && Validate.arr[3].className == "valid")
+                return true;
+            else
+                return false;
+        }
     },
 
-    validation: function (f) {
-
-    console.log(f.elements);
+    getElements: function (f) {
  
         for (var i = 0; i < f.elements.length; i++) {
             Validate.arr[i] = f.elements[i];
-            console.log(f.elements[i]);
         }
     },
 
@@ -54,7 +59,7 @@ var Validate = {
 
         el.onblur = function () {
 
-            if (el.value.match(/^[\w]+@(?:[\w-]+\.)+[\w]{2,6}$/) !== null)
+            if (el.value.match(/^[\w]+@(?:[\w-]+\.)+[\w]{2,4}$/) !== null)
                 el.setAttribute("class", "valid");
             else
                 el.setAttribute("class", "invalid");
