@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+	    <meta charset="UTF-8" />
+	    <title>index</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <div id ="wrapper">
+        <form action ="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method ="post" id ="form">
+
+		<label for = "firstname">Förnamn: </label>
+			<input type ="text" name ="firstname"><br />
+		<label for = "lastname">Efternamn: </label>
+			<input type ="text" name ="lastname"><br />
+		<label for = "number">Postnummer: </label>
+			<input type ="text" name ="postnumber"><br />
+		<label for = "E-mail">E-mail: </label>
+			<input type ="text" name ="email"><br />
+		<label for = "pricemodell">Prismodell </label>
+			<select name = "pricemodell">
+				<option value = "låg">Låg</option>
+				<option value = "mellan">Mellan</option>
+				<option value = "hög">Hög</option>
+			</select>
+			
+		<input type ="submit" value ="send">
+		</form>
+        </div>
+        <script src="script/validate.js"></script>
+        
+    </body>
+
+</html>
