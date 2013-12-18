@@ -14,7 +14,73 @@
 #wrapper {
     margin:0 auto;
     width: 300px;
+    border:solid 1px blue;
+    background-color:#66CCCC;
 }
 input {
     display:block;
+    margin:0 auto;
+}
+label {
+    margin-left:70px;
+}
+select {
+    margin-left:25px;
+}
+
+#overlay {
+    position:absolute;
+    text-align:center;
+    width:100%;
+    height:100%;
+    left:0px;
+    top:0px;
+    z-index:1000;
+    background-color:white;
+    opacity:0.8;
+}
+
+#popup {
+    width:500px;
+    height:300px;
+    border:solid black 1px;
+    padding:10px;
+    margin:0 auto;
+    margin-top:200px;
+    background-color:#f7e3aa;
+    text-align:left;
+}
+
+.visible {
+    visibility:visible;
+}
+
+.hidden {
+    visibility:hidden;
+}
+
+header {
+    font-size:28px;
+    font-style:oblique;
+}
+
+#popup input {
+    float:right;
+    margin-left:20px;
+}
+
+p {
+    text-align:right;
+}
+
+.name {
+    font-size:24px;
+    font-style:normal;
+    padding-top:6px;
+}
+
+.values {
+    font-size:18px;
+    font-style:normal;
+    padding-top:2px;
 }
