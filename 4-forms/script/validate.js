@@ -120,14 +120,14 @@ var Validate = {
             d.setAttribute("class", "name");
             temp2 = Validate.arr[i].name;
             d.appendChild(document.createTextNode(temp2));
-            header.appendChild(d);
+            div.appendChild(d);
 
 
             var dd = document.createElement("div");
             dd.setAttribute("class", "values");
             temp = Validate.arr[i].value;
             dd.appendChild(document.createTextNode(temp));
-            header.appendChild(dd);
+            div.appendChild(dd);
         }
         
         
