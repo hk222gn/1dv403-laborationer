@@ -1,3 +1,66 @@
 body{
 	background-image:url('pics/desktop.png');
 }
+
+#wrapper {
+    margin:0 auto;
+    display:block;
+    border:solid black 1px;
+    width:1024px;
+    height:728px;
+    border-radius:15px;
+}
+
+#desktop {
+    height:92%;
+    width:1024px;
+    display:block;
+    background-image:url('pics/innerdesktop.png');
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+}
+
+#menubar {
+    display:block;
+    padding:6px;
+    border-top:solid black 1px;
+    background-image:url('pics/menubackground.png');
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+}
+
+#window {
+    height:200px;
+    width:400px;
+    background-color:white;
+    border-radius:15px;
+    margin-left:90px;
+    border:solid black 2px;
+}
+#header {
+    height:26px;
+    width:100%;
+    background-color:gray;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+    color:white;
+}
+
+#header a {
+    float:right;    
+}
+
+#content {
+    height:148px;
+    width:100%;
+}
+
+#footer {
+    height:26px;
+    width:100%;
+    background-color:gray;
+    border-bottom-left-radius:12px;
+    border-bottom-right-radius:12px;
+}
+
+/* Thanks to subtlepatterns.com for the background pictures.*/
