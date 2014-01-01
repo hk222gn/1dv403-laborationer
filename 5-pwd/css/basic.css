@@ -1,5 +1,5 @@
 body{
-	background-image:url('pics/desktop.png');
+	background-image:url('pics/desktop.png');/* Thanks to subtlepatterns.com for the background picture.*/
 }
 
 #wrapper {
@@ -14,33 +14,37 @@ body{
 #desktop {
     height:92%;
     width:1024px;
-    display:block;
-    background-image:url('pics/innerdesktop.png');
+    background-image:url('pics/innerdesktop.png');/* Thanks to subtlepatterns.com for the background picture.*/
     border-top-left-radius:15px;
     border-top-right-radius:15px;
+    clear:both;
 }
 
 #menubar {
     display:block;
     padding:6px;
     border-top:solid black 1px;
-    background-image:url('pics/menubackground.png');
+    background-image:url('pics/menubackground.png'); /* Thanks to subtlepatterns.com for the background picture.*/
     border-bottom-left-radius:15px;
     border-bottom-right-radius:15px;
 }
 
 #window {
-    height:200px;
-    width:400px;
+    display:block;
+    height:300px;
+    width:350px;
     background-color:white;
     border-radius:15px;
     margin-left:90px;
     border:solid black 2px;
+    position:absolute;
+    margin-top:40px;
 }
 #header {
     height:26px;
     width:100%;
     background-color:gray;
+    border-bottom:solid black 1px;
     border-top-left-radius:12px;
     border-top-right-radius:12px;
     color:white;
@@ -51,16 +55,41 @@ body{
 }
 
 #content {
-    height:148px;
+    height:248px;
     width:100%;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+#content a {
+    display:block;
+    background-image:url('pics/background.png');
+    padding:5px;
+    border:1px solid gray;
+    border-radius:6px;
+    float:left;
+    margin-left:10px;
+    margin-bottom:10px;
+    margin-top:1px;
+}
+
+#content a img {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    
 }
 
 #footer {
+    clear:both;
     height:26px;
     width:100%;
     background-color:gray;
+    border-top:solid black 1px;
     border-bottom-left-radius:12px;
     border-bottom-right-radius:12px;
 }
+#footer img {
+    margin-left:7px;
+}
 
-/* Thanks to subtlepatterns.com for the background pictures.*/
