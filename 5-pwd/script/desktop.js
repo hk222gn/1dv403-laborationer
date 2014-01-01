@@ -93,19 +93,17 @@ var desktop = {
     },
 
     getHighestWidthAndHeight: function (info) {
-        var width = 0;
-        var height = 0;
+		var arr = new Array(0, 0);
 
         for (var i in info) {
-            if (info[i].thumbWidth > width) {
-                width = info[i].thumbWidth;
+            if (info[i].thumbWidth > arr[0]) {
+                arr[0] = info[i].thumbWidth;
             }
-            if (info[i].thumbHeight > height) {
-                height = info[i].thumbHeight;
+            if (info[i].thumbHeight > arr[1]) {
+                arr[1] = info[i].thumbHeight;
             }
         }
-
-        return [width, height];
+		return arr;
     }
 }
 window.onload = desktop.init;
